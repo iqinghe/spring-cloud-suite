@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: scs-producer
+server:
+  port: 11000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
