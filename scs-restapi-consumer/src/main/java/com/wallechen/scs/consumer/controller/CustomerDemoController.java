@@ -18,6 +18,7 @@ import com.wallechen.scs.restservice.producer.model.domain.SpuInfo;
 public class CustomerDemoController {
 	@Autowired
 	private ProducerService producerService;
+
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {

@@ -1,26 +1,33 @@
 spring:
   application:
     name: scs-consumer
+server:
+  port: 12000
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:10001/eureka/
-
+    healthcheck:
+      enabled: true
 feign:
   client:
     config:
-      default:
+      default: #default是全局配置,也可以给每一个client单独配置。
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
   hystrix:
-    enabled: true
+    enabled: true #false只有在服务不可用时,才进行熔断。
 
 # To set thread isolation to SEMAPHORE
 hystrix:
   command:
-    default:
+    default: #The hystrixcommandkey takes the format of FeignClassName#methodSignature.
       execution:
         isolation:
           strategy: SEMAPHORE
+        timeout:
+          enabled: true #超时打开
+        thread:
+          timeoutInMilliseconds: 3000

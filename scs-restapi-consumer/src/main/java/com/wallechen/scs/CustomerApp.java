@@ -1,4 +1,4 @@
-package com.wallechen.scs.consumer;
+package com.wallechen.scs;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
  * customer rest api
  */
 @Configuration
-@ComponentScan(basePackages = {"com.wallechen.scs"})
 @EnableAutoConfiguration
 @EnableFeignClients(basePackages = {"com.wallechen.scs.restservice"})
+@ComponentScan(basePackages = {"com.wallechen.scs"})
 public class CustomerApp {
 
 	public static void main(String[] args) {

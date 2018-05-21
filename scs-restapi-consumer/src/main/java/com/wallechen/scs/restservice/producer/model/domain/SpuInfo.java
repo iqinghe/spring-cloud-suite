@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 商品基本信息
+ * 商品基本信息,如果是Java,可以抽离出来,在接口提供方和调用方之间共享。
  * Created by wallechen on 18/4/8.
  */
 public class SpuInfo implements Serializable {
