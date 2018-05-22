@@ -1,9 +1,49 @@
 spring:
   application:
     name: scs-producer
+  profiles: producer1
 server:
   port: 11000
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:10001/eureka/
+logging:
+  file: ${spring.profiles}.log
+  level:
+    root: error
+    com.wallechen.scs.producer.controller: debug
+---
+# 启动多个服务
+spring:
+  application:
+    name: scs-producer
+  profiles: producer2
+server:
+  port: 11001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+logging:
+  file: ${spring.profiles}.log
+  level:
+    root: error
+    com.wallechen.scs.producer.controller: debug
+---
+# 启动多个服务
+spring:
+  application:
+    name: scs-producer
+  profiles: producer3
+server:
+  port: 11002
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+logging:
+  file: ${spring.profiles}.log
+  level:
+    root: error
+    com.wallechen.scs.producer.controller: debug
