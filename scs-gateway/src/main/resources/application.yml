@@ -1,0 +1,41 @@
+# 单个服务器配置
+spring:
+  application:
+    name: zuul-gateway
+server:
+  port: 15000
+
+zuul:
+  ignoredServices: '*'
+  ribbonIsolationStrategy: THREAD
+  routes:
+    consumer:
+      path: /consumer/**
+      stripPrefix: true
+      serviceId: scs-consumer
+  threadPool:
+    useSeparateThreadPools: true
+    threadPoolKeyPrefix: zuulgw
+
+#熔断配置
+hystrix:
+  command:
+    scs-consumer:
+      execution:
+        isolation:
+          strategy: THREAD
+        timeout:
+          enabled: true #超时打开
+        thread:
+          timeoutInMilliseconds: 3000
+ribbon:
+  eureka:
+    enabled: true
+  okhttp:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+    registerWithEureka: false

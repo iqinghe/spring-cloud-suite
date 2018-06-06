@@ -1,6 +1,7 @@
 package com.wallechen.scs.consumer.controller;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +25,10 @@ public class CustomerDemoController {
 	String home() {
 		return "Hello World!";
 	}
-	@RequestMapping(value="/infos",method = RequestMethod.GET)
-	public Integer getInfos() {
-		List<SpuInfo> infos=producerService.getSpuInfos();
+
+	@RequestMapping(value = "/infos", method = RequestMethod.GET)
+	public Integer getInfos(HttpServletRequest request) {
+		List<SpuInfo> infos = producerService.getSpuInfos();
 		return infos.size();
 	}
 
